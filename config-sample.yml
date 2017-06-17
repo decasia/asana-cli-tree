@@ -1,0 +1,16 @@
+---
+# Place your copy of this config file at ~/.asana-cli-tree.yml
+# If you want to store it elsewhere or call it something else,
+# just hack the CONFIG_PATH constant in the script
+
+# Your Asana access token
+access_token: INSERT_HERE
+
+# ID of the workspace to examine
+workspace_id: INSERT_HERE
+
+# Tag ID of a tag that identifies tasks that have subtasks.
+has_subtask_tag: INSERT_HERE
+
+# Place to store data
+dump_path: /home/USERNAME/.asana-cli-tree.marshal
