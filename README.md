@@ -10,6 +10,8 @@ I currently use Asana to keep track of a lot of personal tasks and projects. Sin
 
 Copy `config-sample.yml` to `~/.asana-cli-tree.yml` and customize the values appropriately.
 
+I also set up a shell alias (in .zshrc) something like `alias todo="ruby /path/to/view-tasks.rb"`.
+
 TODO: Explain config values.
 
 ## Usage

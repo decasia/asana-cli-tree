@@ -4,6 +4,7 @@ require 'asana'
 require 'yaml'
 require 'paint'
 require 'optparse'
+require 'pry'
 
 include Asana::Resources::ResponseHelper
 
@@ -19,7 +20,7 @@ class LoadTasks
 
   attr_reader :data
 
-  TASK_FIELDS = %w(completed completed_on name parent)
+  TASK_FIELDS = %w(completed completed_on name)
 
   def initialize(access_token, workspace_id, has_subtask_tag)
     @data = {}
@@ -35,6 +36,8 @@ class LoadTasks
   end
 
   def load
+    # TODO: everything should just be loaded as a hash (like sections).
+    # the Asana model classes create N queries and ignore child data.
     load_project_list
     load_tasks_with_subtasks
     load_all_projects
@@ -204,7 +207,7 @@ if __FILE__ == $PROGRAM_NAME
 
   # Masks constant warnings from FaradayMiddleware::OAuth2.
   # This PR would fix them if merged: https://github.com/Asana/ruby-asana/pull/52
-  $stderr = File.new( '/dev/null', 'w' ) if options[:verbose]
+  $stderr = File.new( '/dev/null', 'w' ) unless options[:verbose]
 
   # load config from file
   config = YAML::load_file CONFIG_PATH
